@@ -50,9 +50,9 @@ int isMirror(struct node *t1, struct node *t2)
         return 1;
     if (t1 == NULL || t2 == NULL)
         return 0;
-    return (t1->value == t2->value) && 
-    isMirror(t1->left, t2->right) && 
-    isMirror(t1->right, t2->left);
+    if (t1->value != t2->value)
+        return 0;
+    return isMirror(t1->left, t2->right) && isMirror(t1->right, t2->left);
 }
 
 int Check_for_Symmetric(struct node *root1)
